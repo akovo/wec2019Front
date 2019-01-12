@@ -76,6 +76,8 @@ class Home extends Component {
         if(this.state.processNum == 0){
             newNodes.push({id: 1, label: this.state.newL1,value:this.state.newL1,x:200,y:0});
             newNodes.push({id: 2, label: this.state.newL2,value:this.state.newL2,x:200,y:0});
+            newEdges[2].from = 1;
+            newEdges[3].from = 2;
         }
         else{
             newNodes.push({id: this.state.processNum*2-1, label: this.state.newL1,value:this.state.newL1,x:200,y:0});
@@ -145,7 +147,7 @@ class Home extends Component {
                             <Form.Input fluid type="number" label='Line 1 Exit Cost'  />
                             <Form.Input fluid type="number" label='Line 2 Exit Cost'  />
                         </Form.Group>
-                        <Button type='submit'>Submit</Button>
+                        {/* <Button type='submit'>Submit</Button> */}
                     </Form>
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Group widths='equal'>
