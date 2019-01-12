@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import Login from './login.js'
 import './App.css';
-
+import Home from './Home.js';
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Login></Login>
-        
+        {/* <div> */}
+          <Home></Home>
       </div>
     );
   }
