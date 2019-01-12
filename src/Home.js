@@ -112,7 +112,7 @@ class Home extends Component {
         
         console.log(this.state);
     }
-    handleDone(event){
+    async handleDone(event){
         
         if(!this.test){
             const num = this.state.processNum;
@@ -145,9 +145,44 @@ class Home extends Component {
                 } 
             });
             this.test = true;
+
         }
         else{
-            console.log(this.state)
+            console.log(this.state);
+            var body = this.state.graph;
+            var request = new Request('http://ac41e32e.ngrok.io/api/algorithm/simplified', {
+                method: 'POST',
+                body: JSON.stringify(body),
+                headers: new Headers({
+                    'Content-Type': ' 	application/json',
+                    'Access-Control-Allow-Origin': '*'
+                })
+            });
+            var response = await fetch(request);
+            var data = await response.json();
+            alert(data.response);
+            // const numbers = data.response.nodes;
+            // const len = numbers.length;
+            // const newNodes = this.state.graph.nodes
+            // for (var i = 0; i < len; i++) {
+            //     const nodeId = numbers[i];
+            //     for(var j = 0;j<newNodes.length;j++){
+            //         if(nodeId == newNodes[j].id){
+            //             newNodes[j].color = "red";
+            //         }
+
+            //     }
+            // }
+            // this.setState({
+            //     ...this.state,
+            //     graph: {
+                    
+            //     ...this.state.graph,
+            //     nodes:[
+            //         ...newNodes
+            //     ]
+            //     }
+            // });
         }
         
         
